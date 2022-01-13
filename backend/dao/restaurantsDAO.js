@@ -89,12 +89,32 @@ export default class RestaurantsDAO {
                                     date: -1
                                 }
                             }
-                        ]
+                        ],
+                        as: "reviews"
+                    }
+                },
+                {
+                    $addFields: {
+                        reviews: "$reviews"
                     }
                 }
             ]
+
+            return await restaurants.aggregate(pipeline).next()
         } catch (error) {
-            
+            console.error(`Something went wrong in getRestaurantById: ${error}`)
+            throw error
+        }
+    }
+
+    static async getCuisines() {
+        let cuisines = []
+        try {
+            cuisines = await restaurants.distinct("cuisine")
+            return cuisines
+        } catch (error) {
+            console.error(`Unable to get cuisines, ${error}`);
+            return cuisines
         }
     }
 }

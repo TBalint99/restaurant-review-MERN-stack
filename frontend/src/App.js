@@ -1,11 +1,11 @@
 import React, { useState } from "react"
-import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom"
+import { Switch, Route, Link } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import AddReview from "./components/add-review";
-import Restaurants from "./components/restaurants";
-import RestaurantsList from "./components/restaurants-list";
-import Login from "./components/login";
+import AddReview from "./components/add-review"
+import Restaurants from "./components/restaurants"
+import RestaurantsList from "./components/restaurants-list"
+import Login from "./components/login"
 
 function App() {
 
@@ -50,31 +50,21 @@ function App() {
       <div className="container mt-3">            
             <Switch>
 
-              <Route
-                exact path={["/", "/restaurants"]}
-                component={RestaurantsList}
-              />
+              <Route exact path={["/", "/restaurants"]}>
+                <RestaurantsList/>
+              </Route>
 
-              <Route
-                path="/restaurants/:id/reviews"
-                render={(props) => {
-                  <AddReview {...props} user={user} />
-                }}
-              />
+              <Route path="/restaurants/:id/reviews" >
+                <AddReview user={user} />
+              </Route>
 
-              <Route
-                path="/restaurants/:id"
-                render={(props) => {
-                  <Restaurants {...props} user={user} />
-                }}
-              />
+              <Route path="/restaurants/:id" >
+                <Restaurants user={user} />
+              </Route>
 
-              <Route
-                path="/login"
-                render={(props) => {
-                  <Login {...props} login={login} />
-                }}
-              />
+              <Route path="/login" >
+                <Login login={login} />
+              </Route>
               
             </Switch>
       </div>

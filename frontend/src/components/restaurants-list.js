@@ -84,7 +84,7 @@ export default function RestaurantsList(props) {
     return (
         <div>
             <div className="row pb-1">
-                <div className="input-group col-lg-4">
+                <div className="input-group col-lg">
                     <input
                         type="text"
                         className="form-control"
@@ -102,13 +102,13 @@ export default function RestaurantsList(props) {
                         </button>
                     </div>
                 </div>
-                <div className="input-group col-lg-4">
+                <div className="input-group col-lg">
                     <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search by zip"
-                    value={searchZip}
-                    onChange={onChangeSearchZip}
+                        type="text"
+                        className="form-control"
+                        placeholder="Search by zip"
+                        value={searchZip}
+                        onChange={onChangeSearchZip}
                     />
                     <div className="input-group-append">
                         <button
@@ -120,12 +120,12 @@ export default function RestaurantsList(props) {
                         </button>
                     </div>
                 </div>
-                <div className="input-group col-lg-4">
-                    <select onChange={onChangeSearchCuisine}>
+                <div className="input-group col-lg">
+                    <select onChange={onChangeSearchCuisine} className="col">
                         {
                             cuisines.map(cuisine => {
                                 return (
-                                    <option value={cuisine}>
+                                    <option value={cuisine} key={cuisine}>
                                         {cuisine.substr(0, 20)}
                                     </option>
                                 )
@@ -149,7 +149,7 @@ export default function RestaurantsList(props) {
                         const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`
 
                         return (
-                            <div className="col-lg-4 pb-1">
+                            <div className="col-lg-4 pb-1" key={restaurant._id}>
                                 <div className="card">
                                     <div className="card-body">
                                         <h5 className="card-title">{restaurant.name}</h5>

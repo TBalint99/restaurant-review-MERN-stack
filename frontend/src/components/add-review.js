@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import RestaurantDataService from "../services/restaurant";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 export default function AddReview(props) {
     
-    let initialReviewState = ""
+    let initialState = ""
 
     let editing = false;
 
     const { id } = useParams()
+    const history = useHistory()
   
-    if (props.location.state && props.location.state.currentReview) {
+    if (history.location.state && history.location.state.currentReview) {
       editing = true;
-      initialReviewState = props.location.state.currentReview.text
+      initialState = history.location.state.currentReview.text
     }
   
-    const [review, setReview] = useState(initialReviewState);
+    const [review, setReview] = useState(initialState);
     const [submitted, setSubmitted] = useState(false)
   
     const handleInputChange = event => {
@@ -31,7 +32,7 @@ export default function AddReview(props) {
       }
   
       if (editing) {
-        data.review_id = props.location.state.currentReview._id
+        data.review_id = history.location.state.currentReview._id
         RestaurantDataService.updateReview(data)
           .then(response => {
             setSubmitted(true);
@@ -52,6 +53,9 @@ export default function AddReview(props) {
       }
   
     };
+
+    console.log(history.location.state);
+    console.log(props);
   
     return (
         <div>

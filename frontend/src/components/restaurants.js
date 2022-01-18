@@ -83,7 +83,7 @@ export default function Restaurants(props) {
                                                                         onClick={() => deleteReview(review._id, index)}
                                                                         className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
                                                                     <Link to={{
-                                                                        pathname: "/restaurants/" + String(id) + "/review",
+                                                                        pathname: "/restaurants/" + String(id) + "/reviews",
                                                                         state: {
                                                                             currentReview: review
                                                                         }

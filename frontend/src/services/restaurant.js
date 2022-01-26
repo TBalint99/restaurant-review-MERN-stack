@@ -13,7 +13,7 @@ class RestaurantDataService {
         return http.get(`?${by}=${query}&page=${page}`)
     }
 
-    creatwReview(data) {    
+    createReview(data) {    
         return http.post("/reviews", data)
     }
 

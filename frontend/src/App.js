@@ -39,7 +39,7 @@ function App() {
                 </a>
               ) : (
                 <Link to={"/login"} className="nav-link">
-                  Login
+                  Login dude
                 </Link>
               )
             }
